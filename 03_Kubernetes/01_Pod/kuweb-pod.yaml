@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kuweb-pod
+  labels:
+    app: kuweb-label
+spec:
+  containers:
+  - name: kuweb
+    image: tewtweb:1.0
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8080
+        protocol: TCP
+  - name: ubuntu-linux
+    image: songxi339/ubuntu-linux:3.0
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    command: ["tail"]
+    args: ["-f", "/dev/null"]
